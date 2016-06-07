@@ -1,0 +1,2 @@
+# snapcraft-mimic
+Snapping Mimic
