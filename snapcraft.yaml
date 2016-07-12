@@ -1,0 +1,33 @@
+name: mimic
+version: 1.1.0
+summary: Mimic TTS engine
+description:  Mycroft's TTS engine; a fork of  CMU's Flite (Festival Lite) 
+confinement: devmode # use "strict" to enforce system access only via declared interfaces
+#uild-packages: [python-dev, python-virtualenv, python-setuptools, python-gobject-dev, virtualenvwrapper, libtool, libffi-dev, libssl-dev, autoconf, bison, swig2.0, libglib2.0-dev, portaudio19-dev, mpg123, python-psutil, speech-dispatcher]
+
+parts: 
+  mimic:
+    plugin: autotools
+    configflags:
+     - --enable-static=no
+     - --prefix=/usr/local/
+     - --with-audio=pulseaudio
+    source: https://github.com/MycroftAI/mimic.git
+    source-type: git
+    build-packages:
+      - libpulse-dev
+      - gcc
+      - make
+      - pkg-config
+      - libasound2-dev
+    stage-packages: [libpulse0]
+    snap:
+      - usr/local/bin
+      - usr/local/include
+      - usr/local/lib
+
+apps:
+  mimic:
+    command: usr/local/bin/mimic
+    plugs: [pulseaudio]
+
