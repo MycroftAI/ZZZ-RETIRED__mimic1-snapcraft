@@ -2,7 +2,7 @@ name: mimic
 version: 1.1.0
 summary: Mimic TTS engine
 description:  Mycroft's TTS engine; a fork of  CMU's Flite (Festival Lite) 
-confinement: confinement
+confinement: strict
 parts: 
   mimic:
     plugin: autotools
