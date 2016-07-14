@@ -2,9 +2,7 @@ name: mimic
 version: 1.1.0
 summary: Mimic TTS engine
 description:  Mycroft's TTS engine; a fork of  CMU's Flite (Festival Lite) 
-confinement: devmode # use "strict" to enforce system access only via declared interfaces
-#uild-packages: [python-dev, python-virtualenv, python-setuptools, python-gobject-dev, virtualenvwrapper, libtool, libffi-dev, libssl-dev, autoconf, bison, swig2.0, libglib2.0-dev, portaudio19-dev, mpg123, python-psutil, speech-dispatcher]
-
+confinement: confinement
 parts: 
   mimic:
     plugin: autotools
@@ -25,9 +23,7 @@ parts:
       - usr/local/bin
       - usr/local/include
       - usr/local/lib
-
 apps:
   mimic:
     command: usr/local/bin/mimic
     plugs: [pulseaudio]
-
